@@ -40,7 +40,7 @@ const AuthLayout = () => {
         <div
           className={`d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1 relative${
             location.pathname === '/auth'
-              ? 'rounded-t-[30px] lg:rounded-r-[64px] lg:rounded-tl-none'
+              ? 'rounded-t-[30px] lg:rounded-r-[64px] lg:rounded-tl-none h-full '
               : 'rounded-none lg:rounded-r-[64px] lg:rounded-tl-none  h-full'
           }`}
           style={{
@@ -94,6 +94,7 @@ const AuthLayout = () => {
             height: '100%',
           }}
         ></div>
+
         <div
           className={`${
             location.pathname === '/auth' || location.pathname === '/auth/'
@@ -103,7 +104,7 @@ const AuthLayout = () => {
           style={{
             backgroundImage: 'url(/media/background/group_782.png)',
             backgroundRepeat: 'no-repeat',
-            height: '50%',
+            height: '30%',
             width: '100%',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
@@ -116,7 +117,7 @@ const AuthLayout = () => {
               <img
                 alt='Logo'
                 src='/media/logos/2b2d47b844e91821d93a812482b946e0.png'
-                className='h-60px h-lg-75px w-auto mb-15'
+                className='h-50px h-lg-75px w-auto mb-15'
               />
             </div>
           </div>

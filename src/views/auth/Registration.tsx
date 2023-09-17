@@ -93,7 +93,7 @@ export function Registration() {
   }
   return (
     <form
-      className='form w-100 fv-plugins-bootstrap5 fv-plugins-framework  '
+      className='form w-100 h-100 fv-plugins-bootstrap5 fv-plugins-framework  relative'
       noValidate
       id='kt_login_signup_form'
       onSubmit={formik.handleSubmit}
@@ -265,7 +265,7 @@ export function Registration() {
           </button>
         </div>
       </div>
-      <div className='text-gray-500 text-center fw-semibold fs-6 max-lg:absolute max-lg:-bottom-56 max-lg:translate-x-1/2 max-lg:right-1/2'>
+      <div className='text-gray-500 w-auto text-center fw-semibold fs-6 max-lg:absolute -max-lg:bottom-30 max-lg:translate-x-1/2 max-lg:right-1/2'>
         Already have an account?{' '}
         <Link to={'/auth/login'} className='link-primary'>
           Login Now

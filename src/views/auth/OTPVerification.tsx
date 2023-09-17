@@ -69,7 +69,7 @@ export function OTPVerification() {
             name='code_1'
             data-inputmask="'mask': '9', 'placeholder': ''"
             maxLength={1}
-            className='form-control bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
+            className='form-control flex-1 bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
             inputMode='text'
           />
           <input
@@ -77,7 +77,7 @@ export function OTPVerification() {
             name='code_2'
             data-inputmask="'mask': '9', 'placeholder': ''"
             maxLength={1}
-            className='form-control bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
+            className='form-control  flex-1  bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
             inputMode='text'
           />
           <input
@@ -85,7 +85,7 @@ export function OTPVerification() {
             name='code_3'
             data-inputmask="'mask': '9', 'placeholder': ''"
             maxLength={1}
-            className='form-control bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
+            className='form-control  flex-1  bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
             inputMode='text'
           />
           <input
@@ -93,23 +93,7 @@ export function OTPVerification() {
             name='code_4'
             data-inputmask="'mask': '9', 'placeholder': ''"
             maxLength={1}
-            className='form-control bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
-            inputMode='text'
-          />
-          <input
-            type='text'
-            name='code_5'
-            data-inputmask="'mask': '9', 'placeholder': ''"
-            maxLength={1}
-            className='form-control bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
-            inputMode='text'
-          />
-          <input
-            type='text'
-            name='code_6'
-            data-inputmask="'mask': '9', 'placeholder': ''"
-            maxLength={1}
-            className='form-control bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
+            className='form-control  flex-1  bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
             inputMode='text'
           />
         </div>

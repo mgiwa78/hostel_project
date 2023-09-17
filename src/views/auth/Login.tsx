@@ -63,7 +63,7 @@ export function Login() {
     <form
       onSubmit={formik.handleSubmit}
       id='kt_login_signin_form kt_sign_in_form'
-      className='form w-100'
+      className='form w-100 h-100 '
       noValidate
     >
       <div className='text-left mb-11 '>
