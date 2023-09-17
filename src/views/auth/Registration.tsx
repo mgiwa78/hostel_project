@@ -12,43 +12,49 @@ import {useAuth} from '../../services/auth/Auth'
 import AuthInput from '@components/form/authInput'
 
 const initialValues = {
-  firstname: '',
-  lastname: '',
+  fullName: '',
   email: '',
+  studentID: '',
   password: '',
-  changepassword: '',
-  acceptTerms: false,
+  confirmPassword: '',
+  phoneNumber: '',
+  acceptTerms: '',
 }
 
 const registrationSchema = Yup.object().shape({
-  firstname: Yup.string()
+  fullName: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('First name is required'),
+    .required('Full Name is required'),
   email: Yup.string()
     .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Email is required'),
-  lastname: Yup.string()
+  studentID: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('Last name is required'),
-  password: Yup.string()
+    .required('Student ID is required'),
+  phoneNumber: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('Password is required'),
-  changepassword: Yup.string()
+    .required('Phone Number is required'),
+  confirmPassword: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Password confirmation is required')
     .oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
-  acceptTerms: Yup.bool().required('You must accept the terms and conditions'),
+  password: Yup.string()
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Password is required'),
+  acceptTerms: Yup.string().required('You must accept the terms and conditions'),
 })
 
 export function Registration() {
   const [loading, setLoading] = useState(false)
   const {saveAuth, setCurrentUser} = useAuth()
+
   const formik = useFormik({
     initialValues,
     validationSchema: registrationSchema,
@@ -57,10 +63,10 @@ export function Registration() {
       try {
         const {data: auth} = await register(
           values.email,
-          values.firstname,
-          values.lastname,
+          values.fullName,
+          values.phoneNumber,
           values.password,
-          values.changepassword
+          values.confirmPassword
         )
         saveAuth(auth)
         const {data: user} = await getUserByToken(auth.api_token)
@@ -79,6 +85,12 @@ export function Registration() {
     PasswordMeterComponent.bootstrap()
   }, [])
 
+  const handleChange = (e: any) => {
+    const {name, value}: {name: 'email' | 'password'; value: string} = e.target
+    formik.values[name] = value
+    console.log(name, value)
+    formik.setFieldValue(name, value)
+  }
   return (
     <form
       className='form w-100 fv-plugins-bootstrap5 fv-plugins-framework  '
@@ -101,51 +113,111 @@ export function Registration() {
 
       <div className='fv-row mb-2'>
         <AuthInput
+          handleChange={handleChange}
           type='text'
           placeholder='Fullname'
-          name='Fullname'
-          autoComplete='off'
+          name='fullName'
+          value={formik.values.fullName}
+          autoComplete='false'
           iconPath=''
-        />
-      </div>
-      <div className='fv-row mb-2'>
-        <AuthInput type='email' placeholder='Email' name='Email' autoComplete='off' iconPath='' />
+        />{' '}
+        {formik.touched.fullName && formik.errors.fullName && (
+          <div className='fv-plugins-message-container fr'>
+            <span role='alert' className='text-red-600 '>
+              {formik.errors.fullName}
+            </span>
+          </div>
+        )}
       </div>
       <div className='fv-row mb-2'>
         <AuthInput
+          handleChange={handleChange}
+          type='email'
+          placeholder='Email'
+          name='email'
+          value={formik.values.email}
+          autoComplete='off'
+          iconPath=''
+        />
+        {formik.touched.email && formik.errors.email && (
+          <div className='fv-plugins-message-container fr'>
+            <span role='alert' className='text-red-600 '>
+              {formik.errors.email}
+            </span>
+          </div>
+        )}
+      </div>
+      <div className='fv-row mb-2'>
+        <AuthInput
+          handleChange={handleChange}
           type='text'
           placeholder='Student ID'
-          name='Student ID'
+          name='studentID'
           autoComplete='off'
+          value={formik.values.studentID}
           iconPath=''
         />
+        {formik.touched.studentID && formik.errors.studentID && (
+          <div className='fv-plugins-message-container fr'>
+            <span role='alert' className='text-red-600 '>
+              {formik.errors.studentID}
+            </span>
+          </div>
+        )}
       </div>
       <div className='fv-row mb-2'>
         <AuthInput
+          handleChange={handleChange}
           type='text'
           placeholder='Phone Number'
-          name='Phone Number'
+          name='phoneNumber'
+          value={formik.values.phoneNumber}
           autoComplete='off'
           iconPath=''
         />
+        {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+          <div className='fv-plugins-message-container fr'>
+            <span role='alert' className='text-red-600 '>
+              {formik.errors.phoneNumber}
+            </span>
+          </div>
+        )}
       </div>
       <div className='fv-row mb-2'>
         <AuthInput
+          handleChange={handleChange}
           type='password'
           placeholder='Password'
-          name='Password'
+          name='password'
+          value={formik.values.password}
           autoComplete='off'
           iconPath=''
         />
+        {formik.touched.password && formik.errors.password && (
+          <div className='fv-plugins-message-container fr'>
+            <span role='alert' className='text-red-600 '>
+              {formik.errors.password}
+            </span>
+          </div>
+        )}
       </div>
       <div className='fv-row mb-2'>
         <AuthInput
+          handleChange={handleChange}
           type='password'
           placeholder='Confirm password'
-          name='Confirm password'
+          name='confirmPassword'
           autoComplete='off'
+          value={formik.values.confirmPassword}
           iconPath=''
         />
+        {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+          <div className='fv-plugins-message-container fr'>
+            <span role='alert' className='text-red-600 '>
+              {formik.errors.confirmPassword}
+            </span>
+          </div>
+        )}
       </div>
       {/* end::Form group */}
 
@@ -157,11 +229,13 @@ export function Registration() {
             type='checkbox'
             id='kt_login_toc_agree'
             {...formik.getFieldProps('acceptTerms')}
+            value={formik.values.acceptTerms}
           />
           <span>
             I agree to the <a className='ms-1 link-primary'>Terms and Conditions</a>.
           </span>
         </label>
+
         {formik.touched.acceptTerms && formik.errors.acceptTerms && (
           <div className='fv-plugins-message-container'>
             <div className='fv-help-block'>
@@ -177,15 +251,17 @@ export function Registration() {
         <div className='d-grid mb-10 mt-10'>
           <button
             type='submit'
-            id='kt_sign_in_submit'
             style={{height: '70px', fontSize: '20px'}}
             className='btn btn-primary'
+            disabled={formik.isSubmitting}
           >
-            <span className='indicator-label'>Register</span>
-            <span className='indicator-progress'>
-              Please wait...
-              <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-            </span>
+            {!loading && <span className='indicator-label'>Register</span>}
+            {loading && (
+              <span className='indicator-progress' style={{display: 'block'}}>
+                Please wait...
+                <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+              </span>
+            )}
           </button>
         </div>
       </div>

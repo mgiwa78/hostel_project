@@ -11,25 +11,26 @@ import {useDispatch} from 'react-redux'
 import AuthInput from '@components/form/authInput'
 
 const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
+  password: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  password: Yup.string()
+    .required('Password is required'),
+  confirmPassword: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
 })
 
 const initialValues = {
-  email: '',
-  password: '',
+  confirmPassword: 'Password',
+  password: 'Password',
 }
 
-export function Login() {
+export function CreateNewPassword() {
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const [loading, setLoading] = useState(false)
 
   const formik = useFormik({
     initialValues,
@@ -37,9 +38,8 @@ export function Login() {
 
     onSubmit: async (values, {setSubmitting}) => {
       // navigate('/')
-      console.log(values)
       setLoading(true)
-      const data = {email: values.email, password: values.password}
+      const data = {confirmPassword: values.confirmPassword, password: values.password}
       try {
         const LOGIN_RESPONSE = await post('auth/signin', data)
 
@@ -51,90 +51,78 @@ export function Login() {
       }
     },
   })
-  const [loading, setLoading] = useState(false)
-
   const handleChange = (e: any) => {
-    const {name, value}: {name: 'email' | 'password'; value: string} = e.target
+    const {name, value}: {name: 'confirmPassword' | 'password'; value: string} = e.target
     formik.values[name] = value
     formik.setFieldValue(name, value)
   }
-
   return (
     <form
-      onSubmit={formik.handleSubmit}
-      id='kt_login_signin_form kt_sign_in_form'
       className='form w-100'
-      noValidate
+      noValidate={true}
+      onSubmit={formik.handleSubmit}
+      id='kt_sign_in_form'
     >
-      <div className='text-left mb-11 '>
+      <div className='text-left mb-11'>
         <h1 className='text-dark fw-bolder mb-3' style={{fontSize: '30px'}}>
-          Welcome back! Glad <br /> to see you, Again!
+          Create new password
         </h1>
+      </div>
+      <div className='text-left mb-11'>
+        <p className='text-dark fw-bolder mb-3 text-gray-500' style={{fontSize: '16px'}}>
+          Your new password must be unique from those previously used.
+        </p>
       </div>
 
       <div className='fv-row mb-8'>
         <AuthInput
           handleChange={handleChange}
-          type='email'
-          placeholder='Student ID/ Email'
-          name='email'
-          value={initialValues.email}
-          autoComplete='false'
+          type='password'
+          placeholder='New Password'
+          name='password'
+          value={formik.values.password}
+          autoComplete='off'
           iconPath=''
         />
-        {formik.touched.email && formik.errors.email && (
+        {formik.touched.confirmPassword && formik.errors.confirmPassword && (
           <div className='fv-plugins-message-container'>
-            <span role='alert' className='text-red-600 '>
-              {formik.errors.email}
+            <span role='alert' className='bo'>
+              {formik.errors.confirmPassword}
             </span>
           </div>
         )}
       </div>
-      <div className='fv-row mb-3'>
+      <div className='fv-row mb-8'>
         <AuthInput
           handleChange={handleChange}
           type='password'
-          placeholder='Enter your password'
-          name='password'
+          value={formik.values.confirmPassword}
+          placeholder='Confirm Password'
+          name='confirmPassword'
           autoComplete='off'
-          value={initialValues.password}
-          iconPath='/media/icons/eye.svg'
+          iconPath=''
         />
         {formik.touched.password && formik.errors.password && (
-          <div className='fv-plugins-message-container fr'>
-            <span role='alert' className='text-red-600 '>
+          <div className='fv-plugins-message-container'>
+            <span role='alert' className='text-red-600 ' style={{color: 'red'}}>
               {formik.errors.password}
             </span>
           </div>
         )}
       </div>
-      <div className='d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8'>
-        <div></div>
-        <Link to={'/auth/forgot-password'} className='link-primary'>
-          Forgot Password
-        </Link>
-      </div>
+
       <div className='d-grid mb-10 mt-10'>
         <button
-          type='submit'
+          type='button'
           style={{height: '70px', fontSize: '20px'}}
           className='btn btn-primary'
-          disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading && <span className='indicator-label'>Login</span>}
-          {loading && (
-            <span className='indicator-progress' style={{display: 'block'}}>
-              Please wait...
-              <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
-            </span>
-          )}
+          <span className='indicator-label'>Reset Password</span>
+          <span className='indicator-progress'>
+            Please wait...
+            <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
+          </span>
         </button>
-      </div>
-      <div className='text-gray-500 text-center fw-semibold fs-6 max-lg:absolute max-lg:bottom-10 max-lg:translate-x-1/2 max-lg:right-1/2'>
-        Don’t have an account?{' '}
-        <Link to={'/auth/register'} className='link-primary'>
-          Register Now
-        </Link>
       </div>
     </form>
   )

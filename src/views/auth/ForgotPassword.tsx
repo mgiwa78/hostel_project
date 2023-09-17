@@ -1,15 +1,16 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import {useState} from 'react'
 import * as Yup from 'yup'
 import clsx from 'clsx'
-import {Link} from 'react-router-dom'
+import {Link, useNavigate} from 'react-router-dom'
 import {useFormik} from 'formik'
-import {requestPassword} from '../../services/auth/_requests'
+import {toAbsoluteUrl} from '@helpers/index'
+import post from '@lib/post'
+import {setAuth} from '@stores/auth/authSlice'
+import {useDispatch} from 'react-redux'
+import AuthInput from '@components/form/authInput'
 
-const initialValues = {
-  email: 'admin@demo.com',
-}
-
-const forgotPasswordSchema = Yup.object().shape({
+const loginSchema = Yup.object().shape({
   email: Yup.string()
     .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
@@ -17,115 +18,97 @@ const forgotPasswordSchema = Yup.object().shape({
     .required('Email is required'),
 })
 
+const initialValues = {
+  email: '',
+}
+
 export function ForgotPassword() {
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const [loading, setLoading] = useState(false)
-  const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined)
+
   const formik = useFormik({
     initialValues,
-    validationSchema: forgotPasswordSchema,
-    onSubmit: (values, {setStatus, setSubmitting}) => {
+    validationSchema: loginSchema,
+
+    onSubmit: async (values, {setSubmitting}) => {
       setLoading(true)
-      setHasErrors(undefined)
-      setTimeout(() => {
-        requestPassword(values.email)
-          .then(({data: {result}}) => {
-            setHasErrors(false)
-            setLoading(false)
-          })
-          .catch(() => {
-            setHasErrors(true)
-            setLoading(false)
-            setSubmitting(false)
-            setStatus('The login detail is incorrect')
-          })
-      }, 1000)
+      const data = {email: values.email}
+      try {
+        navigate('/auth/otp-verification')
+      } catch (error) {
+        setSubmitting(false)
+        setLoading(false)
+      }
     },
   })
+  const handleChange = (e: any) => {
+    const {name, value}: {name: 'email'; value: string} = e.target
+    formik.values[name] = value
+    formik.setFieldValue(name, value)
+  }
 
   return (
     <form
-      className='form w-100 fv-plugins-bootstrap5 fv-plugins-framework'
-      noValidate
-      id='kt_login_password_reset_form'
+      className='form w-100'
       onSubmit={formik.handleSubmit}
+      noValidate={true}
+      id='kt_sign_in_form'
     >
-      <div className='text-center mb-10'>
-        {/* begin::Title */}
-        <h1 className='text-dark fw-bolder mb-3'>Forgot Password ?</h1>
-        {/* end::Title */}
-
-        {/* begin::Link */}
-        <div className='text-gray-500 fw-semibold fs-6'>
-          Enter your email to reset your password.
-        </div>
-        {/* end::Link */}
+      <div className='text-left mb-2'>
+        <h1 className='text-dark fw-bolder mb-3' style={{fontSize: '30px'}}>
+          Forgot Password?
+        </h1>
+      </div>
+      <div className='text-left mb-11'>
+        <p className='text-dark  mb-3 text-gray-500' style={{fontSize: '16px'}}>
+          Don't worry! It occurs. Please enter the email linked with your account.
+        </p>
       </div>
 
-      {/* begin::Title */}
-      {hasErrors === true && (
-        <div className='mb-lg-15 alert alert-danger'>
-          <div className='alert-text font-weight-bold'>
-            Sorry, looks like there are some errors detected, please try again.
-          </div>
-        </div>
-      )}
-
-      {hasErrors === false && (
-        <div className='mb-10 bg-light-info p-8 rounded'>
-          <div className='text-info'>Sent password reset. Please check your email</div>
-        </div>
-      )}
-      {/* end::Title */}
-
-      {/* begin::Form group */}
       <div className='fv-row mb-8'>
-        <label className='form-label fw-bolder text-gray-900 fs-6'>Email</label>
-        <input
+        <AuthInput
+          handleChange={handleChange}
           type='email'
-          placeholder=''
+          placeholder='Enter your email'
+          name='email'
+          value={formik.values.email}
           autoComplete='off'
-          {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control bg-transparent',
-            {'is-invalid': formik.touched.email && formik.errors.email},
-            {
-              'is-valid': formik.touched.email && !formik.errors.email,
-            }
-          )}
+          iconPath=''
         />
         {formik.touched.email && formik.errors.email && (
           <div className='fv-plugins-message-container'>
-            <div className='fv-help-block'>
-              <span role='alert'>{formik.errors.email}</span>
-            </div>
+            <span role='alert' className='text-red-600 '>
+              {formik.errors.email}
+            </span>
           </div>
         )}
       </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group */}
-      <div className='d-flex flex-wrap justify-content-center pb-lg-0'>
-        <button type='submit' id='kt_password_reset_submit' className='btn btn-primary me-4'>
-          <span className='indicator-label'>Submit</span>
+      <div className='d-grid mb-10 mt-10'>
+        <button
+          // to={'/auth/otp-verification'}
+          type='submit'
+          style={{height: '70px', fontSize: '20px'}}
+          className='btn btn-primary'
+          disabled={formik.isSubmitting || !formik.isValid}
+        >
+          {!loading && <span className='indicator-label'>Send Code</span>}
           {loading && (
-            <span className='indicator-progress'>
+            <span className='indicator-progress' style={{display: 'block'}}>
               Please wait...
               <span className='spinner-border spinner-border-sm align-middle ms-2'></span>
             </span>
           )}
         </button>
-        <Link to='/auth/login'>
-          <button
-            type='button'
-            id='kt_login_password_reset_form_cancel_button'
-            className='btn btn-light'
-            disabled={formik.isSubmitting || !formik.isValid}
-          >
-            Cancel
-          </button>
-        </Link>{' '}
       </div>
-      {/* end::Form group */}
+      <div className='text-gray-500 text-center fw-semibold fs-6 max-lg:absolute max-lg:bottom-10 max-lg:translate-x-1/2 max-lg:right-1/2'>
+        Remember Password?{' '}
+        <Link to={'/auth/login'} className='link-primary'>
+          Login
+        </Link>
+      </div>
     </form>
   )
 }

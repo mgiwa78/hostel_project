@@ -3,10 +3,20 @@ type AuthInputTypes = {
   placeholder: string
   name: string
   autoComplete: string
+  value?: string
   type: string
   iconPath: string
+  handleChange: Function
 }
-const AuthInput = ({placeholder, name, autoComplete, type, iconPath}: AuthInputTypes) => {
+const AuthInput = ({
+  placeholder,
+  name,
+  autoComplete,
+  type,
+  iconPath,
+  value,
+  handleChange,
+}: AuthInputTypes) => {
   return (
     <div
       style={{height: '56px', backgroundColor: '#F7F8F9', border: '1px solid  #E8ECF4'}}
@@ -16,6 +26,8 @@ const AuthInput = ({placeholder, name, autoComplete, type, iconPath}: AuthInputT
         type={type}
         placeholder={placeholder}
         name={name}
+        onChange={(e) => handleChange(e)}
+        value={value}
         autoComplete={autoComplete}
         className='form-control bg-transparent'
       />
