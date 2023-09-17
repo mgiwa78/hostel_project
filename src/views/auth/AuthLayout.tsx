@@ -12,7 +12,7 @@ const AuthLayout = () => {
   let location = useLocation()
 
   console.log(location.pathname === '/auth')
-
+  console.log(location)
   useEffect(() => {
     document.body.classList.add('bg-body')
     return () => {
@@ -44,7 +44,9 @@ const AuthLayout = () => {
             backgroundColor: '#fff',
           }}
         >
-          {location.pathname !== '/auth' ? (
+          {location.pathname === '/auth' || location.pathname === '/auth/' ? (
+            ''
+          ) : (
             <div className='row'>
               <div
                 onClick={() => goBack()}
@@ -66,8 +68,6 @@ const AuthLayout = () => {
                 </svg>
               </div>
             </div>
-          ) : (
-            ''
           )}
           <div className='d-flex flex-center flex-column flex-lg-row-fluid '>
             <div className='w-lg-500px p-10 '>
@@ -92,7 +92,11 @@ const AuthLayout = () => {
           }}
         ></div>
         <div
-          className={`${location.pathname !== '/auth' ? 'lg:hidden hidden ' : 'lg:hidden flex'}`}
+          className={`${
+            location.pathname === '/auth' || location.pathname === '/auth/'
+              ? 'lg:hidden  flex'
+              : 'lg:hidden hidden'
+          }`}
           style={{
             backgroundImage: 'url(/media/background/group_782.png)',
             backgroundRepeat: 'no-repeat',
@@ -100,7 +104,6 @@ const AuthLayout = () => {
             width: '100%',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
-
             justifyContent: 'center',
             alignItems: 'center',
           }}

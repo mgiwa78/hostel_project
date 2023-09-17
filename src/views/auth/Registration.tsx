@@ -88,7 +88,8 @@ export function Registration() {
     >
       <div className='text-left mb-11'>
         <h1 className='text-dark fw-bolder mb-3' style={{fontSize: '30px'}}>
-          Welcome back! Glad <br /> to see you, Again!
+          Hello! Register to get
+          <br /> started
         </h1>
       </div>
 

@@ -34,14 +34,14 @@ export function Auth() {
         </h1>
       </div>
 
-      <div className='d-grid mb-5 ' style={{}}>
+      <div className='d-grid mb-5 text-[20px] lg:text-[50px]' style={{}}>
         <button
           onClick={() => navigate('login')}
           type='button'
-          className='btn btn-primary  text-[20px] lg:text-[50px] h-[50px] lg:h-70px w-[330px] lg:w-[462px]'
+          className='btn btn-primary  h-[50px] lg:h-70px w-[330px] lg:w-[462px]'
           style={{fontWeight: '600'}}
         >
-          <span className='indicator-label'>Login</span>
+          <span className='indicator-label  text-[20px]'>Login</span>
         </button>
       </div>
 
@@ -52,9 +52,9 @@ export function Auth() {
             fontWeight: '600',
           }}
           type='button'
-          className='btn btn-primary-inverse rounded  border border-primary text-[20px] lg:text-[50px] h-[50px] lg:h-70px w-[330px] lg:w-[462px]'
+          className='btn btn-primary-inverse rounded  border border-primary h-[50px] lg:h-70px w-[330px] lg:w-[462px]'
         >
-          <span className='indicator-label text-primary'>Register</span>
+          <span className='indicator-label text-primary  text-[20px]'>Register</span>
         </button>
       </div>
     </div>
