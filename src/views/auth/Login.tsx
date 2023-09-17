@@ -68,7 +68,8 @@ export function Login() {
     >
       <div className='text-left mb-11 '>
         <h1 className='text-dark fw-bolder mb-3' style={{fontSize: '30px'}}>
-          Welcome back! Glad <br /> to see you, Again!
+          Welcome back!
+          <br /> Glad to see you, Again!
         </h1>
       </div>
 
