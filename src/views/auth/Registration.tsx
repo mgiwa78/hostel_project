@@ -219,9 +219,7 @@ export function Registration() {
           </div>
         )}
       </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group */}
       <div className='fv-row mb-8'>
         <label className='form-check form-check-inline' htmlFor='kt_login_toc_agree'>
           <input
@@ -244,9 +242,7 @@ export function Registration() {
           </div>
         )}
       </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group */}
       <div className='text-center'>
         <div className='d-grid mb-10 mt-10'>
           <button

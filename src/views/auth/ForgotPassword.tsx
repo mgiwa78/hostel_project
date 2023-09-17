@@ -24,7 +24,6 @@ const initialValues = {
 
 export function ForgotPassword() {
   const navigate = useNavigate()
-  const dispatch = useDispatch()
 
   const [loading, setLoading] = useState(false)
 

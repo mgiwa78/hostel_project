@@ -36,7 +36,6 @@ export function Login() {
     validationSchema: loginSchema,
 
     onSubmit: async (values, {setSubmitting}) => {
-      // navigate('/')
       console.log(values)
       setLoading(true)
       const data = {email: values.email, password: values.password}

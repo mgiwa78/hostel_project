@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import {useState} from 'react'
 import * as Yup from 'yup'
-import clsx from 'clsx'
-import {Link, useNavigate} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import {useFormik} from 'formik'
-import {toAbsoluteUrl} from '@helpers/index'
 import post from '@lib/post'
 import {setAuth} from '@stores/auth/authSlice'
 import {useDispatch} from 'react-redux'
