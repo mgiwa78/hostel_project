@@ -14,8 +14,7 @@ const loginSchema = Yup.object().shape({
   email: Yup.string()
     .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
+    .max(50, 'Maximum 50 symbols'),
 })
 
 const initialValues = {
@@ -63,13 +62,14 @@ export function OTPVerification() {
       </div>
 
       <div className='fv-row mb-8'>
-        <div className='d-flex flex-wrap flex-stack'>
+        <div className='flex gap-1 justify-center items-center'>
           <input
             type='text'
             name='code_1'
             data-inputmask="'mask': '9', 'placeholder': ''"
             maxLength={1}
-            className='form-control flex-1 bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
+            style={{width: '60px', height: '60px'}}
+            className='form-control  bg-transparent text-center mx-1 my-2'
             inputMode='text'
           />
           <input
@@ -77,7 +77,8 @@ export function OTPVerification() {
             name='code_2'
             data-inputmask="'mask': '9', 'placeholder': ''"
             maxLength={1}
-            className='form-control  flex-1  bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
+            style={{width: '60px', height: '60px'}}
+            className='form-control    bg-transparent text-center mx-1 my-2'
             inputMode='text'
           />
           <input
@@ -85,15 +86,17 @@ export function OTPVerification() {
             name='code_3'
             data-inputmask="'mask': '9', 'placeholder': ''"
             maxLength={1}
-            className='form-control  flex-1  bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
+            style={{width: '60px', height: '60px'}}
+            className='form-control    bg-transparent text-center mx-1 my-2'
             inputMode='text'
           />
           <input
             type='text'
             name='code_4'
+            style={{width: '60px', height: '60px'}}
             data-inputmask="'mask': '9', 'placeholder': ''"
             maxLength={1}
-            className='form-control  flex-1  bg-transparent h-60px w-60px fs-2qx text-center mx-1 my-2'
+            className='form-control    bg-transparent text-center mx-1 my-2'
             inputMode='text'
           />
         </div>

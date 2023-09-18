@@ -32,16 +32,16 @@ const AuthLayout = () => {
       style={{backgroundColor: '#274193'}}
     >
       <div
-        className='d-flex flex-column flex-lg-row flex-column-fluid'
+        className='d-flex  flex-lg-row  flex-col-reverse lg:flex-row-reverse'
         style={{
           height: 'max-content',
         }}
       >
         <div
-          className={`d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 order-2 order-lg-1 relative${
+          className={`d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 relative${
             location.pathname === '/auth'
-              ? 'rounded-t-[30px] lg:rounded-r-[64px] lg:rounded-tl-none h-full '
-              : 'rounded-none lg:rounded-r-[64px] lg:rounded-tl-none  h-full'
+              ? 'rounded-t-[30px] lg:rounded-r-[64px] lg:rounded-tl-none min-h-screen '
+              : 'rounded-none lg:rounded-r-[64px] lg:rounded-tl-none  min-h-screen'
           }`}
           style={{
             backgroundColor: '#fff',
@@ -98,8 +98,8 @@ const AuthLayout = () => {
         <div
           className={`${
             location.pathname === '/auth' || location.pathname === '/auth/'
-              ? 'lg:hidden  flex'
-              : 'lg:hidden hidden'
+              ? 'lg:hidden  flex order-2'
+              : 'lg:hidden hidden order-2'
           }`}
           style={{
             backgroundImage: 'url(/media/background/group_782.png)',

@@ -261,7 +261,7 @@ export function Registration() {
           </button>
         </div>
       </div>
-      <div className='text-gray-500 w-auto text-center fw-semibold fs-6 max-lg:absolute -max-lg:bottom-30 max-lg:translate-x-1/2 max-lg:right-1/2'>
+      <div className='text-gray-500 w-auto text-center fw-semibold fs-6 max-lg:absolute -max-lg:bottom-50 max-lg:translate-x-1/2 max-lg:right-1/2'>
         Already have an account?{' '}
         <Link to={'/auth/login'} className='link-primary font-bold'>
           Login Now
