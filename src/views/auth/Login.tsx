@@ -110,8 +110,8 @@ export function Login() {
       </div>
       <div className='d-flex flex-stack flex-wrap gap-3 fs-base fw-semibold mb-8'>
         <div></div>
-        <Link to={'/auth/forgot-password'} className='link-primary'>
-          Forgot Password
+        <Link to={'/auth/forgot-password'} className='text-gray-700 font-semibold'>
+          Forgot Password?
         </Link>
       </div>
       <div className='d-grid mb-10 mt-10'>
@@ -132,7 +132,7 @@ export function Login() {
       </div>
       <div className='text-gray-500 text-center fw-semibold fs-6 max-lg:absolute max-lg:bottom-10 max-lg:translate-x-1/2 max-lg:right-1/2'>
         Don’t have an account?{' '}
-        <Link to={'/auth/register'} className='link-primary'>
+        <Link to={'/auth/register'} className='link-primary font-bold'>
           Register Now
         </Link>
       </div>

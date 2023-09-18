@@ -230,7 +230,7 @@ export function Registration() {
             value={formik.values.acceptTerms}
           />
           <span>
-            I agree to the <a className='ms-1 link-primary'>Terms and Conditions</a>.
+            I agree to the <a className='ms-1 link-primary font-bold'>Terms and Conditions</a>.
           </span>
         </label>
 
@@ -251,7 +251,7 @@ export function Registration() {
             className='btn btn-primary'
             disabled={formik.isSubmitting}
           >
-            {!loading && <span className='indicator-label'>Register</span>}
+            {!loading && <span className='indicator-label '>Register</span>}
             {loading && (
               <span className='indicator-progress' style={{display: 'block'}}>
                 Please wait...
@@ -263,7 +263,7 @@ export function Registration() {
       </div>
       <div className='text-gray-500 w-auto text-center fw-semibold fs-6 max-lg:absolute -max-lg:bottom-30 max-lg:translate-x-1/2 max-lg:right-1/2'>
         Already have an account?{' '}
-        <Link to={'/auth/login'} className='link-primary'>
+        <Link to={'/auth/login'} className='link-primary font-bold'>
           Login Now
         </Link>
       </div>

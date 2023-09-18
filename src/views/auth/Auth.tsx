@@ -14,10 +14,10 @@ export function Auth() {
   let location = useLocation()
 
   return (
-    <div className=' w-100 flex justify-center items-center flex-col' id='kt_sign_in_form'>
+    <div className=' lg:gap-8 w-100 flex justify-center items-center flex-col' id='kt_sign_in_form'>
       <div
         className={` justify-center items-center content-center ${
-          location.pathname === '/auth' ? 'hidden' : 'lg:block flex'
+          location.pathname === '/auth' ? 'lg:block flex' : 'hidden'
         }`}
       >
         <img
@@ -34,11 +34,11 @@ export function Auth() {
         </h1>
       </div>
 
-      <div className='d-grid mb-5 text-[20px] lg:text-[50px]' style={{}}>
+      <div className='d-grid mb-2 text-[20px] lg:text-[50px]' style={{}}>
         <button
           onClick={() => navigate('login')}
           type='button'
-          className='btn btn-primary  h-[50px] lg:h-70px w-[330px] lg:w-[462px]'
+          className='btn btn-primary  h-[50px] lg:h-[70px] w-[330px] lg:w-[462px]'
           style={{fontWeight: '600'}}
         >
           <span className='indicator-label  text-[20px]'>Login</span>
@@ -52,7 +52,7 @@ export function Auth() {
             fontWeight: '600',
           }}
           type='button'
-          className='btn btn-primary-inverse rounded  border border-primary h-[50px] lg:h-70px w-[330px] lg:w-[462px]'
+          className='btn btn-primary-inverse rounded  border border-primary h-[50px] lg:h-[70px] w-[330px] lg:w-[462px]'
         >
           <span className='indicator-label text-primary  text-[20px]'>Register</span>
         </button>
