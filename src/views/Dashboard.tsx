@@ -3,20 +3,12 @@ import {FC} from 'react'
 import {PageTitle} from '../layouts/core'
 import {useSelector} from 'react-redux'
 import {selectUserAuth} from '@stores/auth/authSlector'
-import OrganizationAdmin from '@components/OrganizationAdmin'
-import AccountingDasboard from '@components/OrganizationAdmin'
+import StudentDasboard from '@components/StudentDasboard'
+import AccountingDasboard from '@components/StudentDasboard'
 
 const Dashboard: FC = () => {
   const userAuth = useSelector(selectUserAuth)
-  return (
-    <>
-      {userAuth?.roles.includes('Organization Admin') && (
-        <>
-          <OrganizationAdmin />
-        </>
-      )}
-    </>
-  )
+  return <StudentDasboard />
 }
 
 export {Dashboard}

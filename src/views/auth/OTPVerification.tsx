@@ -33,9 +33,12 @@ export function OTPVerification() {
 
     onSubmit: async (values, {setSubmitting}) => {
       setLoading(true)
-
+      setTimeout(() => {
+        setSubmitting(false)
+        setLoading(false)
+        navigate('/auth/create-new-password')
+      }, 2000)
       try {
-        navigate('/auth/password-change-success')
       } catch (error) {
         setSubmitting(false)
         setLoading(false)

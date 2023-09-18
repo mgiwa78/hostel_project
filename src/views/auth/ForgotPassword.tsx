@@ -35,7 +35,11 @@ export function ForgotPassword() {
       setLoading(true)
       const data = {email: values.email}
       try {
-        navigate('/auth/otp-verification')
+        setTimeout(() => {
+          setSubmitting(false)
+          setLoading(false)
+          navigate('/auth/otp-verification')
+        }, 2000)
       } catch (error) {
         setSubmitting(false)
         setLoading(false)

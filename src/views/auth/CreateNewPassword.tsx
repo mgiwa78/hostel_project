@@ -39,10 +39,11 @@ export function CreateNewPassword() {
       setLoading(true)
       const data = {confirmPassword: values.confirmPassword, password: values.password}
       try {
-        const LOGIN_RESPONSE = await post('auth/signin', data)
-
-        dispatch(setAuth(LOGIN_RESPONSE.data))
-        navigate('/')
+        setTimeout(() => {
+          setSubmitting(false)
+          setLoading(false)
+          navigate('/auth/password-change-success')
+        }, 2000)
       } catch (error) {
         setSubmitting(false)
         setLoading(false)

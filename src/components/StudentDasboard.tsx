@@ -7,50 +7,38 @@ import get from '@lib/get'
 import {useSelector} from 'react-redux'
 import {selectUserToken} from '@stores/auth/authSlector'
 
-const AdminDasboard = () => {
+const StudentDasboard = () => {
   const userToken = useSelector(selectUserToken)
   const [productsCount, setProductCount] = useState(0)
   const [categoriesCount, setCategorieCount] = useState(0)
   const [usersCount, setUsersCount] = useState(0)
 
-  const usersSummary = [
-    {
-      colour: 'danger',
-      title: 'Sales Summary',
-      description: 'You Balance',
-      amount: '$37,562.00',
-      data: [
-        {title: 'Sales', description: '100 Regions', amount: '$2,5b', icon: 'compass'},
-        {title: 'Revenue', description: 'Quarter 2/3', amount: '$1,7b', icon: 'category'},
-        {title: 'Growth', description: '80% Rate', amount: '$8,8m', icon: 'phone'},
-        {title: 'Dispute', description: '3090 Refunds', amount: '$270m', icon: 'document'},
-      ],
-    },
-  ]
+  // const fetchDashboardData = async () => {
+  //   const products = await get('products', userToken)
+  //   const categories = await get('categories', userToken)
+  //   const users = await get('users', userToken)
 
-  const fetchDashboardData = async () => {
-    const products = await get('products', userToken)
-    const categories = await get('categories', userToken)
-    const users = await get('users', userToken)
+  //   if (products) {
+  //     setProductCount(products.length)
+  //   }
+  //   if (categories) {
+  //     setCategorieCount(categories.length)
+  //   }
+  //   if (users) {
+  //     setUsersCount(users.length)
+  //   }
+  // }
 
-    if (products) {
-      setProductCount(products.length)
-    }
-    if (categories) {
-      setCategorieCount(categories.length)
-    }
-    if (users) {
-      setUsersCount(users.length)
-    }
-  }
-
-  useEffect(() => {
-    fetchDashboardData()
-  }, [])
+  // useEffect(() => {
+  //   fetchDashboardData()
+  // }, [])
   return (
     <>
-      <PageTitle>Organization Admin</PageTitle>
-      <div className='row g-5 g-xl-10 mb-5 mb-xl-10'>
+      <div className='row text-gray-500 text-[16px] '>
+        <h1>Welcome back, Olivia</h1>
+        <p>Track, manage and forecast your customers and orders.</p>
+      </div>
+      {/* <div className='row g-5 g-xl-10 mb-5 mb-xl-10'>
         <div className='row g-5 g-xl-8'>
           <div className='col-xl-4'>
             <StatisticsWidget5
@@ -97,9 +85,9 @@ const AdminDasboard = () => {
             <RecentImpressions />
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   )
 }
 
-export default AdminDasboard
+export default StudentDasboard

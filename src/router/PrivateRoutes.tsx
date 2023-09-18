@@ -8,6 +8,11 @@ import {AccountHeader} from '../views/accounts/AccountHeader'
 import {PageLink, PageTitle} from '../layouts/core'
 import {Overview} from '../views/accounts/components/Overview'
 import {Settings} from '../views/accounts/components/settings/Settings'
+import {Home} from '@views/Home'
+import {MealBuilder} from '@views/MealBuilder'
+import {Feedback} from '@views/Feedback'
+import {MealHistory} from '@views/MealHistory'
+import {ASettings} from '@views/Settings'
 
 // import {getCSSVariableValue} from '../types/_utils'
 // import {WithChildren} from '../helpers/index'
@@ -37,60 +42,16 @@ const PrivateRoutes = () => {
   return (
     <Routes>
       <Route path='/*' element={<MasterLayout />}>
-        {/* Redirect to Dashboard after success login/registartion */}
-        {/* <Route path='auth/*' element={<Navigate to='organization/dashboard' />} /> */}
-
-        <Route path='organization'>
-          {/* Pages */}
-          <Route path='dashboard' element={<Dashboard />} />
-
-          <Route
-            path='profile'
-            element={
-              <>
-                <AccountHeader />
-                <Outlet />
-              </>
-            }
-          >
-            <Route
-              path='overview'
-              element={
-                <>
-                  <PageTitle breadcrumbs={accountBreadCrumbs}>Overview</PageTitle>
-                  <Overview />
-                </>
-              }
-            />
-            <Route
-              path='settings'
-              element={
-                <>
-                  <PageTitle breadcrumbs={accountBreadCrumbs}>Settings</PageTitle>
-                  <Settings />
-                </>
-              }
-            />
-            <Route index element={<Navigate to='/overview' />} />
-          </Route>
-        </Route>
-
-        {/* <Route path='*' element={<Navigate to='/error/404' />} /> */}
+        <Route path='admin/dashboard' element={<Dashboard />} />
+        <Route path='admin/home' element={<Home />} />
+        <Route path='admin/meal-builder' element={<MealBuilder />} />
+        <Route path='admin/feedback' element={<Feedback />} />
+        <Route path='admin/meal-history' element={<MealHistory />} />
+        <Route path='admin/support' element={<MealHistory />} />
+        <Route path='admin/settings' element={<ASettings />} />
       </Route>
     </Routes>
   )
 }
-
-// const SuspensedView: FC<WithChildren> = ({children}) => {
-//   const baseColor = getCSSVariableValue('--bs-primary')
-//   TopBarProgress.config({
-//     barColors: {
-//       '0': baseColor,
-//     },
-//     barThickness: 1,
-//     shadowBlur: 5,
-//   })
-//   return <Suspense fallback={<TopBarProgress />}>{children}</Suspense>
-// }
 
 export {PrivateRoutes}

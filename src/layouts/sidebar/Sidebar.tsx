@@ -21,6 +21,7 @@ const Sidebar = () => {
     <>
       {(config.layoutType === 'dark-sidebar' || config.layoutType === 'light-sidebar') && (
         <div
+          style={{backgroundColor: '#274193'}}
           ref={sidebarRef}
           id='kt_app_sidebar'
           className={clsx('app-sidebar', config.app?.sidebar?.default?.class)}

@@ -15,7 +15,7 @@ export const DefaultConfig: ILayout = {
       layoutType: 'default',
       mode: 'light',
       rtl: false,
-      primaryColor: '#50CD89',
+      primaryColor: '#274193',
       pageBgWhite: false,
       pageWidth: 'default',
     },
@@ -65,7 +65,7 @@ export const DefaultConfig: ILayout = {
           desktop: {
             enabled: true,
             default: false,
-            hoverable: true,
+            hoverable: false,
           },
         },
         menu: {
@@ -104,7 +104,7 @@ export const DefaultConfig: ILayout = {
     },
     footer: {
       componentName: 'footer',
-      display: true,
+      display: false,
       container: 'fluid',
       containerClass: 'd-flex flex-column flex-md-row flex-center flex-md-stack py-3',
       fixed: {

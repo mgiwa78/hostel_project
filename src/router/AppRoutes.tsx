@@ -29,19 +29,11 @@ const AppRoutes: FC = () => {
     <BrowserRouter basename={PUBLIC_URL}>
       <Routes>
         <Route element={<App />}>
+          <Route index element={<Navigate to='auth' />} />{' '}
           <Route path='error/*' element={<ErrorsPage />} />
           <Route path='logout' element={<Logout />} />
-          {userAuth?.roles.includes('Organization Admin') ? (
-            <>
-              <Route index element={<Navigate to='organization/dashboard' />} />
-              <Route path='*' element={<PrivateRoutes />} />
-            </>
-          ) : (
-            <>
-              <Route path='auth/*' element={<AuthPage />} />
-              <Route path='*' element={<Navigate to='auth' />} />
-            </>
-          )}
+          <Route path='auth/*' element={<AuthPage />} />
+          <Route path='*' element={<PrivateRoutes />} />
           {/* <Route index element={<Navigate to='/organization/dashboard' />} />
 
           <Route path='auth/*' element={<AuthPage />} />

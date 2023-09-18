@@ -111,116 +111,124 @@ export function Registration() {
         </div>
       )}
 
-      <div className='fv-row mb-2'>
-        <AuthInput
-          handleChange={handleChange}
-          type='text'
-          placeholder='Fullname'
-          name='fullName'
-          value={formik.values.fullName}
-          autoComplete='false'
-          iconPath=''
-        />{' '}
-        {formik.touched.fullName && formik.errors.fullName && (
-          <div className='fv-plugins-message-container fr'>
-            <span role='alert' className='text-red-600 '>
-              {formik.errors.fullName}
-            </span>
-          </div>
-        )}
+      <div className='row'>
+        {' '}
+        <div className='col-12 col-md-6'>
+          <AuthInput
+            handleChange={handleChange}
+            type='text'
+            placeholder='Fullname'
+            name='fullName'
+            value={formik.values.fullName}
+            autoComplete='false'
+            iconPath=''
+          />{' '}
+          {formik.touched.fullName && formik.errors.fullName && (
+            <div className='fv-plugins-message-container fr'>
+              <span role='alert' className='text-red-600 '>
+                {formik.errors.fullName}
+              </span>
+            </div>
+          )}
+        </div>
+        <div className='col-12 col-md-6'>
+          <AuthInput
+            handleChange={handleChange}
+            type='email'
+            placeholder='Email'
+            name='email'
+            value={formik.values.email}
+            autoComplete='off'
+            iconPath=''
+          />
+          {formik.touched.email && formik.errors.email && (
+            <div className='fv-plugins-message-container fr'>
+              <span role='alert' className='text-red-600 '>
+                {formik.errors.email}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
-      <div className='fv-row mb-2'>
-        <AuthInput
-          handleChange={handleChange}
-          type='email'
-          placeholder='Email'
-          name='email'
-          value={formik.values.email}
-          autoComplete='off'
-          iconPath=''
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className='fv-plugins-message-container fr'>
-            <span role='alert' className='text-red-600 '>
-              {formik.errors.email}
-            </span>
-          </div>
-        )}
+      <div className='row'>
+        <div className='col-12 col-md-6'>
+          <AuthInput
+            handleChange={handleChange}
+            type='text'
+            placeholder='Student ID'
+            name='studentID'
+            autoComplete='off'
+            value={formik.values.studentID}
+            iconPath=''
+          />
+          {formik.touched.studentID && formik.errors.studentID && (
+            <div className='fv-plugins-message-container fr'>
+              <span role='alert' className='text-red-600 '>
+                {formik.errors.studentID}
+              </span>
+            </div>
+          )}
+        </div>
+        <div className='col-12 col-md-6'>
+          <AuthInput
+            handleChange={handleChange}
+            type='text'
+            placeholder='Phone Number'
+            name='phoneNumber'
+            value={formik.values.phoneNumber}
+            autoComplete='off'
+            iconPath=''
+          />
+          {formik.touched.phoneNumber && formik.errors.phoneNumber && (
+            <div className='fv-plugins-message-container fr'>
+              <span role='alert' className='text-red-600 '>
+                {formik.errors.phoneNumber}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
-      <div className='fv-row mb-2'>
-        <AuthInput
-          handleChange={handleChange}
-          type='text'
-          placeholder='Student ID'
-          name='studentID'
-          autoComplete='off'
-          value={formik.values.studentID}
-          iconPath=''
-        />
-        {formik.touched.studentID && formik.errors.studentID && (
-          <div className='fv-plugins-message-container fr'>
-            <span role='alert' className='text-red-600 '>
-              {formik.errors.studentID}
-            </span>
-          </div>
-        )}
-      </div>
-      <div className='fv-row mb-2'>
-        <AuthInput
-          handleChange={handleChange}
-          type='text'
-          placeholder='Phone Number'
-          name='phoneNumber'
-          value={formik.values.phoneNumber}
-          autoComplete='off'
-          iconPath=''
-        />
-        {formik.touched.phoneNumber && formik.errors.phoneNumber && (
-          <div className='fv-plugins-message-container fr'>
-            <span role='alert' className='text-red-600 '>
-              {formik.errors.phoneNumber}
-            </span>
-          </div>
-        )}
-      </div>
-      <div className='fv-row mb-2'>
-        <AuthInput
-          handleChange={handleChange}
-          type='password'
-          placeholder='Password'
-          name='password'
-          value={formik.values.password}
-          autoComplete='off'
-          iconPath=''
-        />
-        {formik.touched.password && formik.errors.password && (
-          <div className='fv-plugins-message-container fr'>
-            <span role='alert' className='text-red-600 '>
-              {formik.errors.password}
-            </span>
-          </div>
-        )}
-      </div>
-      <div className='fv-row mb-2'>
-        <AuthInput
-          handleChange={handleChange}
-          type='password'
-          placeholder='Confirm password'
-          name='confirmPassword'
-          autoComplete='off'
-          value={formik.values.confirmPassword}
-          iconPath=''
-        />
-        {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-          <div className='fv-plugins-message-container fr'>
-            <span role='alert' className='text-red-600 '>
-              {formik.errors.confirmPassword}
-            </span>
-          </div>
-        )}
+      <div className='row'>
+        {' '}
+        <div className='col-12 col-md-6'>
+          <AuthInput
+            handleChange={handleChange}
+            type='password'
+            placeholder='Password'
+            name='password'
+            value={formik.values.password}
+            autoComplete='off'
+            iconPath=''
+          />
+          {formik.touched.password && formik.errors.password && (
+            <div className='fv-plugins-message-container fr'>
+              <span role='alert' className='text-red-600 '>
+                {formik.errors.password}
+              </span>
+            </div>
+          )}
+        </div>
+        <div className='col-12 col-md-6'>
+          <AuthInput
+            handleChange={handleChange}
+            type='password'
+            placeholder='Confirm password'
+            name='confirmPassword'
+            autoComplete='off'
+            value={formik.values.confirmPassword}
+            iconPath=''
+          />
+          {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+            <div className='fv-plugins-message-container fr'>
+              <span role='alert' className='text-red-600 '>
+                {formik.errors.confirmPassword}
+              </span>
+            </div>
+          )}
+        </div>
       </div>
 
-      <div className='fv-row mb-8'>
+      <div className='col-12 mb-8'>
         <label className='form-check form-check-inline' htmlFor='kt_login_toc_agree'>
           <input
             className='form-check-input'

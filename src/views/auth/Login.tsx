@@ -40,10 +40,11 @@ export function Login() {
       setLoading(true)
       const data = {email: values.email, password: values.password}
       try {
-        const LOGIN_RESPONSE = await post('auth/signin', data)
-
-        dispatch(setAuth(LOGIN_RESPONSE.data))
-        navigate('/')
+        setTimeout(() => {
+          setSubmitting(false)
+          setLoading(false)
+          navigate('/dashboard')
+        }, 2000)
       } catch (error) {
         setSubmitting(false)
         setLoading(false)
