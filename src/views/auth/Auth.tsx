@@ -14,10 +14,13 @@ export function Auth() {
   let location = useLocation()
 
   return (
-    <div className=' lg:gap-8 w-100 flex justify-center items-center flex-col' id='kt_sign_in_form'>
+    <div
+      className=' lg:gap-8  w-100 flex justify-center items-center flex-col'
+      id='kt_sign_in_form'
+    >
       <div
         className={` justify-center items-center content-center ${
-          location.pathname === '/auth' ? 'lg:block flex' : 'hidden'
+          location.pathname === '/auth' ? 'lg:block hidden ' : 'hidden'
         }`}
       >
         <img

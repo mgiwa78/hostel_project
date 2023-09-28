@@ -27,28 +27,25 @@ const AuthLayout = () => {
   }
   return (
     <div
-      className='d-flex flex-column flex-root'
+      className='d-flex flex-column flex-root '
       id='kt_app_root'
       style={{backgroundColor: '#274193'}}
     >
       <div
-        className='d-flex  flex-lg-row  flex-col-reverse lg:flex-row-reverse'
+        className='d-flex flex-lg-row  flex-col-reverse lg:flex-row-reverse'
         style={{
           height: 'max-content',
         }}
       >
         <div
-          className={`d-flex flex-column flex-lg-row-fluid w-lg-50 p-10 relative${
+          className={`d-flex flex-column w-full flex-lg-row-fluid w-lg-50 p-10 relative lg:min-h-screen lg:h-full  bg-white ${
             location.pathname === '/auth'
-              ? 'rounded-t-[30px] lg:rounded-r-[64px] lg:rounded-tl-none min-h-screen '
-              : 'rounded-none lg:rounded-r-[64px] lg:rounded-tl-none  min-h-screen'
+              ? 'rounded-t-[30px] lg:rounded-r-[64px] lg:rounded-tl-none h-3/5 '
+              : 'rounded-none lg:rounded-r-[64px] lg:rounded-tl-none min-h-screen'
           }`}
-          style={{
-            backgroundColor: '#fff',
-          }}
         >
-          <div className='d-flex flex-center flex-column flex-lg-row-fluid '>
-            <div className='w-full p-5'>
+          <div className='d-flex flex-center flex-column flex-lg-row-fluid min-h-screen'>
+            <div className='w-full p-5 min-h-screen'>
               {' '}
               {location.pathname === '/auth' || location.pathname === '/auth/' ? (
                 ''
@@ -99,13 +96,12 @@ const AuthLayout = () => {
         <div
           className={`${
             location.pathname === '/auth' || location.pathname === '/auth/'
-              ? 'lg:hidden  flex order-2'
+              ? 'lg:hidden  flex order-2 h-full'
               : 'lg:hidden hidden order-2'
           }`}
           style={{
             backgroundImage: 'url(/media/background/group_782.png)',
             backgroundRepeat: 'no-repeat',
-            height: '30%',
             width: '100%',
             backgroundPosition: 'center',
             backgroundSize: 'cover',
