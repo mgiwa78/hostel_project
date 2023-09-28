@@ -27,8 +27,12 @@ const SidebarMenuItem: FC<Props & WithChildren> = ({
   const {app} = config
 
   return (
-    <div className='menu-item'>
-      <Link className={`menu-link without-sub ${isActive ? 'bg-[#75b947]' : ''}`} to={to}>
+    <div className='menu-item' style={{width: '100%'}}>
+      <Link
+        style={{borderRadius: '0.475rem', height: '50px'}}
+        className={`menu-link without-sub ${isActive ? 'bg-[#75b947]' : ''}`}
+        to={to}
+      >
         {hasBullet && (
           <span className='menu-bullet'>
             <span className='bullet bullet-dot'></span>
@@ -40,14 +44,15 @@ const SidebarMenuItem: FC<Props & WithChildren> = ({
             <KTIcon
               iconType='solid'
               iconName={icon}
-              className={`fs-2  ${isActive ? 'text-[#274193]' : 'text-white'} `}
+              style={isActive ? {color: '#274193'} : {color: '#fff'}}
+              className={`fs-2  ${isActive ? '' : 'text-white'} `}
             />
           </span>
         )}
         {fontIcon && app?.sidebar?.default?.menu?.iconType === 'font' && (
           <i className={clsx('bi fs-3', fontIcon)}></i>
         )}
-        <span className={`menu-title ' ${isActive ? 'text-black' : 'text-white'} text-[22px]`}>
+        <span className={`menu-title ' ${isActive ? 'text-black' : 'text-white'} text-[18px]`}>
           {title}
         </span>
       </Link>

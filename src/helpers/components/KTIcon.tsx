@@ -6,15 +6,16 @@ type Props = {
   className?: string
   iconType?: 'duotone' | 'solid' | 'outline'
   iconName: string
+  style?: object
 }
 
-const KTIcon: React.FC<Props> = ({className = '', iconType, iconName}) => {
+const KTIcon: React.FC<Props> = ({className = '', iconType, iconName, style}) => {
   if (!iconType) {
     iconType = getLayoutFromLocalStorage().main?.iconType
   }
-
+  console.log(style)
   return (
-    <i className={`ki-${iconType} ki-${iconName}${className && ' ' + className}`}>
+    <i style={style} className={`ki-${iconType} ki-${iconName}${className && ' ' + className}`}>
       {iconType === 'duotone' &&
         [...Array(icons[iconName])].map((e, i) => {
           return (
