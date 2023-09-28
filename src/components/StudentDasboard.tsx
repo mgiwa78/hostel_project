@@ -189,7 +189,7 @@ const StudentDasboard = () => {
         <p className=' text-[16px] '>Track, manage and forecast your customers and orders.</p>
       </div>
 
-      <div className='row g-5 g-xl-2'>
+      <div className='row g-5 mt-1 g-xl-2'>
         <div className='col-xl-6'>
           <StatisticsWidget1
             className='card-xl-stretch mb-xl-8'

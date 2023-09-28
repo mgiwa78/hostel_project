@@ -43,7 +43,7 @@ export function Login() {
         setTimeout(() => {
           setSubmitting(false)
           setLoading(false)
-          navigate('/dashboard')
+          navigate('/admin/dashboard')
         }, 2000)
       } catch (error) {
         setSubmitting(false)
