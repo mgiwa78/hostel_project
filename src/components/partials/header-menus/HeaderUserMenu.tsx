@@ -15,7 +15,7 @@ const HeaderUserMenu: FC = () => {
 
   const handleSignOut = () => {
     dispatch(removeAuth())
-    navigate('auth')
+    navigate('auth/login')
   }
   return (
     <div
@@ -44,7 +44,7 @@ const HeaderUserMenu: FC = () => {
       <div className='separator my-2'></div>
 
       <div className='menu-item px-5'>
-        <Link to={'/organization/profile/overview'} className='menu-link px-5'>
+        <Link to={'/admin/settings'} className='menu-link px-5'>
           My Profile
         </Link>
       </div>
